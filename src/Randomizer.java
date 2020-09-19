@@ -31,7 +31,7 @@ public class Randomizer {
 
         List<String> starters = new ArrayList<>();
 
-        for (int i = 0; i < 21; i++){
+        for (int i = 0; i < 24; i++){
 
             String randomStarter = possibleStarters.get(random.nextInt(possibleStarters.size()));
 
@@ -42,9 +42,16 @@ public class Randomizer {
             }
         }
         System.out.println("Starters:");
-        for (String name : starters) {
-            System.out.println(name);
-        }
+//        for (String name : starters) {
+//        }
 
+        for (int i = 0; i < starters.size(); i++) {
+            if (i < (starters.size() - 1)){
+                System.out.println(starters.get(i) + ",");
+            } else {
+                System.out.println(starters.get(i));
+            }
+
+        }
     }
 }

@@ -67,7 +67,7 @@ Pinsir
 Tauros
 Magikarp
 Lapras
-Ditto 
+Ditto
 Eevee
 Porygon
 Omanyte
@@ -112,13 +112,13 @@ Swinub
 Corsola
 Remoraid
 Delibird
-Mantyke 
+Mantyke
 Skarmory
 Houndour
 Phanpy
 Stantler
 Smeargle
-Miltank 
+Miltank
 Larvitar
 Treecko
 Torchic
@@ -144,7 +144,7 @@ Mawile
 Aron
 Meditite
 Electrike
-Plusle 
+Plusle
 Minun
 Volbeat
 Illumise
@@ -157,7 +157,7 @@ Torkoal
 Spoink
 Spinda
 Trapinch
-Cacnea 
+Cacnea
 Swablu
 Zangoose
 Seviper
@@ -181,7 +181,7 @@ Spheal
 Clamperl
 Relicanth
 Luvdisc
-Bagon 
+Bagon
 Beldum
 Turtwig
 Chimchar
@@ -195,13 +195,13 @@ Shieldon
 Burmy
 Combee
 Pachirisu
-Buizel 
+Buizel
 Cherubi
 Shellos
 Drifloon
 Buneary
 Glameow
-Stunky 
+Stunky
 Bronzor
 Chatot
 Spiritomb
@@ -222,7 +222,7 @@ Lillipup
 Purrloin
 Pansage
 Pansear
-Panpour 
+Panpour
 Munna
 Pidove
 Blitzle
@@ -233,7 +233,7 @@ Audino
 Timburr
 Tympole
 Throh
-Sawk 
+Sawk
 Sewaddle
 Venipede
 Cottonee
@@ -245,7 +245,7 @@ Maractus
 Dwebble
 Scraggy
 Sigilyph
-Yamask 
+Yamask
 Tirtouga
 Archen
 Trubbish
@@ -255,7 +255,7 @@ Gothita
 Solosis
 Ducklett
 Vanillite
-Deerling 
+Deerling
 Emolga
 Karrablast
 Foongus
@@ -279,7 +279,7 @@ Pawniard
 Bouffalant
 Rufflet
 Vullaby
-Heatmor 
+Heatmor
 Durant
 Deino
 Larvesta
@@ -308,7 +308,7 @@ Amaura
 Hawlucha
 Dedenne
 Carbink
-Goomy 
+Goomy
 Klefki
 Phantump
 Pumpkaboo
@@ -325,7 +325,7 @@ Oricorio
 Cutiefly
 Rockruff
 Wishiwashi
-Mareanie 
+Mareanie
 Mudbray
 Dewpider
 Fomantis
