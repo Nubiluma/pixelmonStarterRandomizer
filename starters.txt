@@ -163,7 +163,7 @@ Baltoy
 Lileep
 Anorith
 Feebas
-Castform 
+Castform
 Kecleon
 Shuppet
 Duskull
@@ -280,7 +280,7 @@ Larvesta
 Chespin
 Fennekin
 Froakie
-Bunnelby 
+Bunnelby
 Fletchling
 Scatterbug
 Litleo
@@ -290,7 +290,7 @@ Pancham
 Furfrou
 Espurr
 Honedge
-Spritzee 
+Spritzee
 Swirlix
 Inkay
 Binacle
