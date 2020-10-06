@@ -1,4 +1,4 @@
-Bulbasaur
+﻿Bulbasaur
 Charmander
 Squirtle
 Caterpie
@@ -356,4 +356,20 @@ Yamper
 Rolycoly
 Applin
 Silicobra
+Cramorant
+Arrokuda
+Toxel
+Sizzlipede
+Clobbopus
 Sinistea
+Hatenna
+Impidimp
+Milcery
+Falinks
+Pincurchin
+Snom
+Stonjourner
+Eiscue
+Indeedee
+Morpeko
+Dreepy
