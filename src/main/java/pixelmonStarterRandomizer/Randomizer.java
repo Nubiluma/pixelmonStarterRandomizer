@@ -10,8 +10,9 @@ import java.util.stream.Stream;
 public class Randomizer {
 
     private final Random random = new Random();
+    List<String> starters = new ArrayList<>();
     private List<String> possibleStarters;
-    private List<String> priorityList = Arrays.asList("Dreepy", "Sandile", "Riolu", "Gastly", "Charmander", "Eevee",
+    private final List<String> priorityList = Arrays.asList("Dreepy", "Sandile", "Riolu", "Gastly", "Charmander", "Eevee",
             "Trapinch", "Beldum", "Timburr", "Venipede", "Litwick", "Froakie", "Honedge", "Goomy", "Scorbunny");
     
     private void readStartersFile(){
@@ -28,12 +29,12 @@ public class Randomizer {
         }
     }
 
-    public void randomizeStarters(){
+    public List<String> randomizeStarters(){
 
         readStartersFile();
 
         List<String> combineStarters = Stream.concat(possibleStarters.stream(), priorityList.stream()).collect(Collectors.toList());
-        List<String> starters = new ArrayList<>();
+        starters.clear();
 
         for (int i = 0; i < 24; i++){
 
@@ -45,10 +46,15 @@ public class Randomizer {
                 i--;
             }
         }
-        System.out.println("Starters:");
-//        for (String name : starters) {
-//        }
 
+        return starters;
+    }
+
+    /**
+     * Method for testing of the randomizer:
+     * Prints exactly 24 different Pokémon names separated by lines and commas
+     */
+    public void printStarterList(){ //test method
         for (int i = 0; i < starters.size(); i++) {
             if (i < (starters.size() - 1)){
                 System.out.println(starters.get(i) + ",");
