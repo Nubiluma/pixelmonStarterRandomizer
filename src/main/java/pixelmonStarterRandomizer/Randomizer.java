@@ -3,14 +3,16 @@ package pixelmonStarterRandomizer;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Randomizer {
 
     private final Random random = new Random();
     private List<String> possibleStarters;
+    private List<String> priorityList = Arrays.asList("Dreepy", "Sandile", "Riolu", "Gastly", "Charmander", "Eevee",
+            "Trapinch", "Beldum", "Timburr", "Venipede", "Litwick", "Froakie", "Honedge", "Goomy", "Scorbunny");
     
     private void readStartersFile(){
 
@@ -22,7 +24,7 @@ public class Randomizer {
             e.printStackTrace();
         }
         if (possibleStarters != null) {
-            System.out.println("Amount of possible starters: " + possibleStarters.size());
+            System.out.println("Amount of Pokémon in starters.txt: " + possibleStarters.size());
         }
     }
 
@@ -30,11 +32,12 @@ public class Randomizer {
 
         readStartersFile();
 
+        List<String> combineStarters = Stream.concat(possibleStarters.stream(), priorityList.stream()).collect(Collectors.toList());
         List<String> starters = new ArrayList<>();
 
         for (int i = 0; i < 24; i++){
 
-            String randomStarter = possibleStarters.get(random.nextInt(possibleStarters.size()));
+            String randomStarter = combineStarters.get(random.nextInt(combineStarters.size()));
 
             if (!starters.contains(randomStarter)){
                 starters.add(i, randomStarter);
