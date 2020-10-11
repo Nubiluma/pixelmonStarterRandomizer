@@ -30,7 +30,6 @@ Geodude
 Ponyta
 Slowpoke
 Magnemite
-Farfetch'd
 Doduo
 Seel
 Grimer
@@ -56,7 +55,6 @@ Scyther
 Smoochum
 Elekid
 Magby
-Magikarp
 Eevee
 Porygon
 Omanyte
