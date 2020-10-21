@@ -13,7 +13,8 @@ public class Randomizer {
     List<String> starters = new ArrayList<>();
     private List<String> possibleStarters;
     private final List<String> priorityList = Arrays.asList("Dreepy", "Sandile", "Riolu", "Gastly", "Charmander", "Eevee",
-            "Trapinch", "Beldum", "Timburr", "Venipede", "Litwick", "Froakie", "Honedge", "Goomy", "Scorbunny");
+            "Trapinch", "Beldum", "Timburr", "Venipede", "Litwick", "Froakie", "Honedge", "Goomy", "Scorbunny", "Popplio",
+            "Dratini", "Meditite", "Gligar", "Deerling", "Golett", "Hatenna", "Impidimp");
     
     private void readStartersFile(){
 
