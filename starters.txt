@@ -9,6 +9,8 @@ Spearow
 Ekans
 Pichu
 Sandshrew
+Nidoranmale
+Nidoranfemale
 Cleffa
 Vulpix
 Igglybuff

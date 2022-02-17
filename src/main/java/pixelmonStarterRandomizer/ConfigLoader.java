@@ -1,4 +1,5 @@
 package pixelmonStarterRandomizer;
+
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.ConfigValueFactory;
@@ -18,12 +19,18 @@ public class ConfigLoader {
     private static final String GENERATED_CONFIG_FILE = "new_pixelmon.hocon";
     private Config config;
 
-    public void load(){
+    /**
+     * Method loads original hocon file ('pixelmon.hocon') for the program to use. Will not be overwritten, because it only serves as a template.
+     */
+    public void load() {
         File file = new File(CONFIG_FILE);
         this.config = ConfigFactory.parseFile(file);
     }
 
-    public void save(){
+    /**
+     * Last method called by the program. Saves the generated copy of the original hocon file to project's directory as 'new_pixelmon.hocon' to prevent overwriting of the original file.
+     */
+    public void save() {
         String configContents = config.root().render();
         Path generatedConfigPath = Paths.get(GENERATED_CONFIG_FILE);
 
@@ -35,7 +42,12 @@ public class ConfigLoader {
         }
     }
 
-    public void setStarters(List<String> customStarterList){
+    /**
+     * Alternates the 'starterList' section of the hocon file.
+     *
+     * @param customStarterList is the newly generated list of starter entities. In the main method, this parameter is a method call for the Randomizer class.
+     */
+    public void setStarters(List<String> customStarterList) {
         this.config = this.config.withValue(STARTERS_CONFIG_PATH, ConfigValueFactory.fromIterable(customStarterList));
     }
 }

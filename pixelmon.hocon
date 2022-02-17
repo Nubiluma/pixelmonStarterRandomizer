@@ -7,6 +7,72 @@ AFKHandler {
     # Eine KI übernimmt den Kampf, wenn der Spieler AFK ist. Wird nach der festgelegten Zeit aktiviert und gewährt eine spezifizierte Zeit für jeden Zug danach.
     enableAFKHandler=false
 }
+# Settings that allow you to alter battle mechanics and rates.
+Battle {
+    # Ob Münzamulett bei Verwendung doppelte PokéDollars gewährt.
+    allowAmuletCoin=true
+    # Allows chaining catches to get bonus exp, higher shiny and perfect iv rates.
+    allowCatchCombo=true
+    # ObGiga-Münzregen bei Verwendung zusätzliche PokéDollar vergibt.
+    allowGMaxGoldRush=true
+    # Ob Goldene Zeiten bei Verwendung doppelte PokéDollar vergibt.
+    allowHappyHour=true
+    # Ob Zahltag bei Verwendung zusätzliche PokéDollar vergibt.
+    allowPayDay=true
+    # Bestimmt, ob Spieler-gegen-Spieler-Kämpfe Exp. geben. Kein Exp.-Gewinn in PvP-Kämpfen wenn false.
+    allowPvPExperience=true
+    # Bestimmt, ob Spieler-gegen-Trainer-Kämpfe Exp. geben. Kein Exp.-Gewinn in Trainer-Kämpfen wenn false.
+    allowTrainerExperience=true
+    # Catch combo exp bonuses per threshold.
+    catchComboExpBonuses=[
+        1,
+        1.100000023841858,
+        1.5,
+        2,
+        2.5,
+        3
+    ]
+    # Catch combo perfect IVs per threshold.
+    catchComboPerfectIVs=[
+        0,
+        0,
+        2,
+        3,
+        4,
+        4
+    ]
+    # Catch combo shiny modifiers per threshold.
+    catchComboShinyModifiers=[
+        1,
+        1,
+        1.399999976158142,
+        1.7999999523162842,
+        2.200000047683716,
+        2.200000047683716
+    ]
+    # Catch combo count thresholds at which the effects of the combo change.
+    catchComboThresholds=[
+        0,
+        10,
+        20,
+        30,
+        40
+    ]
+    # Multiplikator für die in Kämpfen gewonnenen Exp.
+    expModifier=1.5
+    # Was passiert, wenn ein Kampf ohne Beendigung zwangsbeendet wurde. 0: Ein Sieger wird bestimmt basierend auf der Anzahl verbliebener Pokemon (mit % KP als Stichprobe). 1: Der Kampf wird als Gleichstand gezählt. 2: Der Kampf wird als unnormal beendet gezählt.
+    forceEndBattleResult=0
+    # Ob G-Max Gold Rush bei Verwendung zusätzliche PokéDollar vergibt.
+    gMaxGoldRushMultiplier=100.0
+    # Betrag, mit dem das Niveau multipliziert wird, wenn der Zahltag verwendet wird.
+    payDayMultiplier=5.0
+    # Chance für Minahme, ein Item nach einem Kampf aufzusammeln (1/rate). 0 deaktiviert dies.
+    pickupRate=10
+    # Falls aktiviert, werden verbrauchbare Items dem Pokémon nach einem PvP-Kampf zurückgegeben.
+    returnHeldItems=true
+    # Chance für Synchronize, die Natur zu Beginn des Kampfes zu synchronisieren.
+    synchronizeChance=1
+}
 # Einstellungen für das Zuchtverhalten.
 Breeding {
     # Erlaubt das Platzieren von Ranch-Blöcken, welche nötig sind, um Pokémon zu züchten.
@@ -17,18 +83,63 @@ Breeding {
     allowRanchExpansion=true
     # Ermöglicht es Ditto-Ditto-Eiern, legendäre Pokémon zu enthalten.
     allowRandomBreedingEggsToBeLegendary=false
+    # The list of dimensions where eggs will be alolan. requires regionalFormsByDimension to be enabled.
+    alolanEggDimensions=[
+        72
+    ]
     # Anzahl an Welt-Ticks, die benötigt sind, um die Zuchtstufe zu erhöhen.
     breedingTicks=2000
+    # The list of dimensions where eggs will be galarian. requires regionalFormsByDimension to be enabled.
+    galarianEggDimensions=[
+        0
+    ]
     # Maximale Pokémonzahl die ein Spieler in allen Ranch Blöcken in allen Welten haben kann. 0 ist unendlich.
     maxCumulativePokemonInRanch=0
     # Anzahl von Zuchtstufen, durch die es zu gehen gilt, bevor die Zucht erfolgt (1-5).
     numBreedingStages=5
-    # pixelmon.config.ovalCharmMultiplier.comment
+    # Brutraten-Modifikator, der angewendet wird, wenn der Ovalpin angelegt ist.
     ovalCharmMultiplier=0.5
+    # Whether alolan and galarian forms are granted to an egg if they are in a certain dimension.
+    regionalFormsByDimension=true
     # Legt die Anzahl von Schritten pro Eierzyklus fest. Niedrigere Nummern brüten Eier schneller aus.
     stepsPerEggCycle=255
     # Kontrolliert die Zucht-Geschwindigkeit basierend auf den Blöcken in der Mugebung. Bei false wird die Zucht-Geschwindigkeit auf x1.0 gestellt.
     useBreedingEnvironment=true
+}
+# Einstellungen, die sich auf die Dimensionen von Pixelmon beziehen.
+Dimensions {
+    # Ob die Ertrunkene Welt ihre questbasierten Einschränkungen hat oder nicht.
+    drownedWorld=true
+    # Die Dimensions-ID wird von Drowned World verwendet. Wenn kleiner als 2, wird standardmäßig ID 73 verwendet.
+    drownedWorldDimId=0
+    # Der Radius der Ertrunkenen Welt. Fährt ein Spieler darüber hinaus, wird er auf die gegenüberliegende Seite teleportiert.
+    drownedWorldRadius=30
+    # Ob Endsiedlungen in neuen Ultradimensions-Chunks generiert werden sollen
+    spawnUltraSpaceEndCities=true
+    # Ob mehr Pokéloot Kisten in neuen Ultradimensions-Chunks generiert werden sollen
+    spawnUltraSpaceExtraLoots=true
+    # Ob mehr Erze in neuen Ultradimensions-Chunks generiert werden sollen
+    spawnUltraSpaceExtraOres=true
+    # Ob mehr Pflanzen (Aprikokos, Beeren) in neuen Ultradimensions-Chunks generiert werden sollen
+    spawnUltraSpaceExtraPlants=true
+    # Ob mehr Schreine in neuen Ultradimensions-Chunks generiert werden sollen
+    spawnUltraSpaceExtraShrines=true
+    # Ob Nethersiedlungen in neuen Ultradimensions-Chunks generiert werden sollen
+    spawnUltraSpaceNetherForts=true
+    # Ob die Ultradimension aktiviert ist oder nicht.
+    ultraSpace=true
+    # Ändert die Seltenheit von Bossen in der Ultra Dimension (bossRate * ultraSpaceBossModifier).
+    ultraSpaceBossModifier=0.5
+    # Ob der Nebel in der Ultradimension für Blinde optimiert werden soll.
+    ultraSpaceColourblindMode=false
+    # Die Dimensions-ID welche die Ultradimension nutzen wird. Wenn sie kleiner als 2 ist, wird der Standardwert 72 genommen.
+    ultraSpaceDimId=0
+    # Ändert die Seltenheit des Gigadynamax-Faktors in der Ultradimension (gigantamaxFactorSpawnRate * ultraSpaceGigantamaxFactorModifier). -1 deaktiviert Gigadynamax-Faktor-Spawns im Ultradimension.
+    ultraSpaceGigantamaxFactorModifier=-1
+    # Verändere die Seltenheit von versteckten Fähigkeiten in der Ultra Dimension (hiddenAbilitySpawnRate * ultraSpaceHiddenAbilityModifier).
+    ultraSpaceHiddenAbilityModifier=0.5
+    # Verändere die Seltenheit von Shiny Pokemon in der Ultra Dimension (shinyRate * ultraSpaceShinyModifier).
+    ultraSpaceShinyModifier=0.5
 }
 # Einstellungen für den Aufzug.
 Elevator {
@@ -46,13 +157,13 @@ ExternalFiles {
     # Lade externe Konfigurationsdateien für Moves aus dem "pixelmon/moves" Ordner. Wenn es auf true gesetzt wird und der Ordner nicht existiert, wird Pixelmon den Ordner erstellen und die Standard-Dateien laden.
     useExternalJSONFilesMoves=false
     # Lädt externe Konfigurationsdateien für NPCs aus dem "pixelmon/npcs"-Ordner. Falls es auf true gesetzt wird und der Ordner nicht existiert, wird Pixelmon den Ordner erstellen und die existierenden Dateien dort hin verschieben.
-    useExternalJSONFilesNPCs=false
-    # Load external configuration files used for quests from the "pixelmon/quests" folder. If set to true and the "pixelmon/quests" folder does not exist, Pixelmon will create the folder and dump the existing files there.
+    useExternalJSONFilesNPCs=true
+    # Lade externe Konfigurationsdateien für Quests aus dem "pixelmon/quests" Ordner. Wenn es auf true gesetzt wird und der Ordner nicht existiert, wird Pixelmon den Ordner erstellen und die Standard-Dateien laden.
     useExternalJSONFilesQuests=false
     # Lädt externe Konfigurationsdateien für Kampfregeln aus dem "pixelmon/rules"-Ordner. Falls es auf true gesetzt wird und der Ordner nicht existiert, wird Pixelmon den Ordner erstellen und die existierenden Dateien dort hin verschieben.
     useExternalJSONFilesRules=false
     # Lädt externe Konfigurationsdateien für Spawning aus dem "pixelmon/spawning"-Ordner. Falls es auf true gesetzt wird und der Ordner nicht existiert, wird Pixelmon den Ordner erstellen und die existierenden Dateien dort hin verschieben.
-    useExternalJSONFilesSpawning=false
+    useExternalJSONFilesSpawning=true
     # Lade externe Konfigurationsdateien für Stats aus dem "pixelmon/stats" Ordner. Wenn es auf true gesetzt wird und der Ordner nicht existiert, wird Pixelmon den Ordner erstellen und die Standard-Dateien laden.
     useExternalJSONFilesStats=false
     # Lädt externe Konfigurationsdateien für Strukturen aus dem "pixelmon/structures"-Ordner. Falls es auf true gesetzt wird und der Ordner nicht existiert, wird Pixelmon den Ordner erstellen und die existierenden Dateien dort hin verschieben.
@@ -64,91 +175,101 @@ ExternalMoves {
     allowDestructiveExternalMoves=true
     # Erlaubt die Benutzung von externen Attacken so wie Zertrümmerer und Zerschneider.
     allowExternalMoves=true
-    # Higher values for better chances of obtaining item.
+    # Höhere Werte für bessere Chancen, einen Gegenstand zu erhalten.
     forageChance=0.30000001192092896
 }
 # Allgemeine Welteinstellungen.
 General {
-    # Whether Amulet Coin will award double PokéDollars when used.
-    allowAmuletCoin=true
     # Erlaubt es dem Amboss, fertige Items durch unfertige aus dem Inventar des Spielers zu ersetzen wenn true.
     allowAnvilAutoreloading=false
     # Erlaubt es dem Spieler, Pokébälle aus der Hotbar zu werfen. Bei false können Pokébälle nur in Kämpfen geworfen werden.
     allowCaptureOutsideBattle=true
-    # Serverseitig, ob Spieler MeiÃŸel nutzen kÃ¶nnen
+    # Serverseitig, ob Spieler Meißel nutzen können
     allowChisels=true
-    # Whether Happy Hour will award double PokéDollars when used.
-    allowHappyHour=true
-    # Whether Pay Day will award extra PokéDollars when used.
-    allowPayDay=true
+    # Ob Shinys, die in Pokémon nicht verfügbar sind, hier verfügbar sind oder nicht.
+    allowIllegalShinies=true
+    # Ermöglicht das Freischalten des Ovalpin nach Abschluss eines regionalen Pokédex.
+    allowOvalCharmFromPokedex=true
     # Erlaubt es Spielern, Aprikokos auf den Boden zu pflanzen.
     allowPlanting=true
     # Server-side, Stelle ein das Spieler Poke-Editor verwenden können. Client-side, Lege fest, ob Spieler den Poke-Editor mit den Einstellung auf Spieler anwenden können.
     allowPokemonEditors=true
     # Erlaubt es dem Spieler, Pokémon umzubenennen (nicht serverweit, nur für den Client).
     allowPokemonNicknames=true
-    # Bestimmt, ob Spieler-gegen-Spieler-Kämpfe Exp. geben. Kein Exp.-Gewinn in PvP-Kämpfen wenn false.
-    allowPvPExperience=true
-    # Ob Pokemon die mit /pokegive oder einem pokespec erschaffen haben die MÃ¶glichkeit besitzen, legendÃ¤r zu sein.
+    # Ob Pokemon die mit /pokegive oder einem pokespec erschaffen haben die Möglichkeit besitzen, legendär zu sein.
     allowRandomPokemonToBeLegendary=true
-    # Enables unlocking the Shiny Charm upon Pokédex completion.
+    # Ermöglicht das Freischalten des Schillarpin nach Abschluss des Pokédex.
     allowShinyCharmFromPokedex=true
     # Wenn aktiviert, sind TMs wiederverwendbar. Wenn deaktiviert, werden TMs bei Benutzung verbraucht.
     allowTMReuse=true
-    # Bestimmt, ob Spieler-gegen-Trainer-Kämpfe Exp. geben. Kein Exp.-Gewinn in Trainer-Kämpfen wenn false.
-    allowTrainerExperience=true
+    # Wenn aktiviert, sind TPs wiederverwendbar. Wenn deaktiviert, werden TPs bei der Verwendung verbraucht.
+    allowTRReuse=false
     # Erlaubt es, Creeper, Zombies und Skelette in der Welt zu spawnen. ACHTUNG - kann dich während des Kampfes töten.
     allowVanillaMobs=false
-    # pixelmon.config.alwaysHaveDynamaxBand.comment
+    # Ob Spieler automatisch ein Dynamax-Band haben oder nicht
     alwaysHaveDynamaxBand=false
     # Setze ob ein Spieler immer einen Megaring tragen soll.
     alwaysHaveMegaRing=false
-    # How many ticks it will take for a lure to expire on average.
+    # Wie viele Ticks dauert es, bis ein Köder im Durchschnitt abläuft.
     averageLureExpiryTicks=17920
     # Gibt Fotos an Spieler, die wilde Pokémon besiegen.
     awardPhotos=false
     # Der Typ der KI, der für Boss-Pokémon verwendet wird.
-    battleAIBoss=2
+    battleAIBoss=3
     # Der Typ der KI, der für Trainer verwendet wird.
-    battleAITrainer=3
+    battleAITrainer=2
     # Der Typ der KI, der für wilde Pokémon verwendet wird.
     battleAIWild=1
+    # Volume of the music that is played during battles.
+    battleMusicVolume=1
     # Ob das Schlafen in einem Bett die Pokémon des Spielers heilt oder nicht.
     bedsHealPokemon=true
+    # Whether berry juices can be crafted in the infuser or not.
+    berryJuiceCrafting=true
     # Multiplikator für das Wachstum von Beeren. Kann zwischen 0.1 und 1000 sein.
-    berryTreeGrowthMultiplier=10
+    berryTreeGrowthMultiplier=15
+    # Welche Dimensionen verwenden sowohl Gen 7- als auch Gen 8-Funktionen. Überschreibt andere Optionen, die dies ansonsten beeinflussen würden.
+    bothGenDimensions=[
+        -1,
+        0,
+        1,
+        72,
+        73
+    ]
     # Lege fest, ob Pokemon außerhalb eines Kampfes verletzt werden können
     canPokemonBeHit=false
+    # Multiplier of the chance that a critical capture will occur when a Catching Charm is equipped.
+    catchingCharmMultiplier=1.1
     # Die Chance ein spezielles Bidiza zu bekommen wenn man es mit einem Luxusball fängt. (-1 für disable)
     chanceToGetSpecialBidoof=30
     # Erlaubt es Spielern, die Klon-Maschine zu benutzen, um Mewtu aus Mew zu klonen.
     cloningMachineEnabled=true
     # Stellt die Anzahll an Boxen ein, die ein Spieler in seinem PC hat (maximal 256 pro Spieler).
     computerBoxes=30
-    # If players party and computer are forcefully saved upon every world save (If false, you should be saving data via /saveall, or risk data loss)
+    # Wenn die Spielergruppe und der Computer bei jedem Weltspeichervorgang zwangsweise gespeichert werden (Falls falsch, sollten Sie Daten über /saveall speichern oder Datenverlust riskieren)
     dataSaveOnWorldSave=true
     # Lege fest, ob der "Alle droppen" button die Items löschen soll anstatt sie zu droppen
-    deleteUnwantedDrops=true
+    deleteUnwantedDrops=false
     # Die Mindestanzahl an Blöcken die ein Pokemon von einem Spieler entfernt sein muss um zu Despawnen.
     despawnRadius=80
-    # Bestimmt ob Pokemon, die keinem Spieler gehÃ¶ren, siche bewegen kÃ¶nnen oder nicht
+    # Bestimmt ob Pokemon, die keinem Spieler gehören, sich bewegen können oder nicht
     disabledNonPlayerPixelmonMovement=false
-    # How much Dynamax scales Pokémon by.
-    dynamaxScale=1.600000023841858
-    # Allow wild Pokemon to initiate battles.
+    # Höhe von Dynamax und Gigadynamax in Blöcken.
+    dynamaxSize=15
+    # Erlaube wilden Pokémon, kämpfe zu initiieren.
     enableWildAggression=false
     # Wenn aktiv können Spieler andere Spieler durch den Wurf eines Pokéballs statt einem Pokémon herausfordern.
     engagePlayerByPokeBall=true
-    # Multiplikator für die in Kämpfen gewonnenen Exp.
-    expModifier=1
-    # Was passiert, wenn ein Kampf ohne Beendigung zwangsbeendet wurde. 0: Ein Sieger wird bestimmt basierend auf der Anzahl verbliebener Pokemon (mit % KP als Stichprobe). 1: Der Kampf wird als Gleichstand gezählt. 2: Der Kampf wird als unnormal beendet gezählt.
-    forceEndBattleResult=0
+    # Experience multiplier when an Exp. Charm is equipped.
+    expCharmMultiplier=1.5
     # Stellt die Variation der Größe durch Wachstum ein (0-2). 1 ist normal.
     growthScaleModifier=1.0
     # Setze die Anzahl wie oft Selfe, Tobuz und Vesprit einen Rubin verzaubern können.
     lakeTrioMaxEnchants=3
-    # False will be based on the remaining inventory of the player.
+    # False basiert auf dem verbleibenden Inventar des Spielers.
     limitShopKeeperStackSize=false
+    # Number of rolls for a wild Pokémon to gain a mark when a Mark Charm is equipped.
+    markCharmRolls=3
     # Das Maximal-Level von Pokemon
     maxLevel=100
     # Die maximale Anzahl an Pflanzen die man pro Chunk haben darf. Das bezieht sich auf Aprikokos und Beeren
@@ -159,14 +280,9 @@ General {
     multiplePhotosOfSamePokemon=true
     # Wenn true muss man zum nutzen OP besitzen, wenn false muss man im Kreativ-Modus sein.
     npcEditorOpOnly=true
-    # Which dimensions use Gen 7 mechanics by default. Otherwise, they'll use Gen 8.
-    oldGenDimensions=[
-        72,
-        0,
-        1,
-        -1
-    ]
-    # The ore colors for the Ore Sense moveskill. format is block;color(hex);patternNumber
+    # Welche Dimensionen nutzen Gen-7-Features (zB Mega Bosse). Jede andere Dimension verwendet Gen 8 (zB Dyna-Raids).
+    oldGenDimensions=[]
+    # Die Erzfarben für die Moveskill Erzsinn. Format ist Block;Farbe(hex);Musternummer
     oreColors=[
         "minecraft:iron_ore;E2C0AA;0",
         "minecraft:gold_ore;FCEE4B;0",
@@ -189,21 +305,19 @@ General {
         "pixelmon:leaf_stone_ore;7EA167;10",
         "pixelmon:fire_stone_ore;CC7132;11"
     ]
-    # Amount to multiply the level by when Pay Day is used.
-    payDayMultiplier=5.0
-    # Chance für Minahme, ein Item nach einem Kampf aufzusammeln (1/rate). 0 deaktiviert dies.
-    pickupRate=10
     # Erlaubt es wilden Pokémon, Items wie Federn etc. beim Tod zu droppen.
     pokemonDropsEnabled=true
     # Schreibt genauere Fehlerberichte in die server.log-Datei wenn aktiviert.
     printErrors=true
-    # Falls aktiviert, werden verbrauchbare Items dem Pokémon nach einem PvP-Kampf zurückgegeben.
-    returnHeldItems=true
-    # Stellt die Vogelschreine auf einfach (false) oder mehrfach nutzbar (true).
-    reusableBirdShrines=false
+    # Wenn true, muss die für die Verwendung des Quest-Editors der Spieler OP-Rechte besitzen. Wenn false, muss sich im Creative-Modus befinden.
+    questEditorOpOnly=true
+    # Ob welches Battle-Gimmick verwendet werden kann, wird allein durch die gewählte Band bestimmt.
+    relaxedBattleGimmickRules=true
+    # Whether Legendary bird shrines can be used multiple times. 0 = Once, 1 = Once per player, 2 = Once per mc day, 3 = Once per day, 4 = Unlimited
+    shrineEncounterMode=3
     # Erlaubt es, legendäre Vogel-Schreine in der Welt zu spawnen, wenn akitv.
     spawnBirdShrines=true
-    # pixelmon.config.spawnCelebiShrines.comment
+    # Lassen Sie Celebi-Schreine (Steineichenwald-Schrein) zufällig in der Welt erscheinen.
     spawnCelebiShrines=true
     # Erlaubt zufälliger Generation von Pokécentern, Schreinen und anderen Gebäuden bei true.
     spawnStructures=true
@@ -211,29 +325,37 @@ General {
     spawnersOpOnly=true
     # Lässt dich wählen, ob die Spieler einen Starter ählen dürfen oder nicht (via Pixelmon-Bildschirm).
     starterOnJoin=true
+    # Whether TMs, HMs, and TRs can be used regardless of generation if the Pokémon has it in their base stats somewhere.
+    superUniversalTMs=false
     # Die Zeit zwischen jeder Synchronisation mit der Systemzeit (in Sekunden).
     systemTimeSyncInterval=30
     # Stellt Tauscher auf einfach (false) oder mehrfach nutzbar (true).
     tradersReusable=false
+    # Ob TMs, VMs und TPs unabhängig von der Generation verwendet werden können, wenn das Pokémon es irgendwo in seiner TM/VM/TP-Liste hat.
+    universalTMs=true
     # Stelle ein ob eine GUI mit Items geöffnet wird sobald ein wildes Pokemon besiegt wird.
     useDropGUI=true
-    # Whether the system time is used for berry growth, meaning they will grow even when the game isn't running.
+    # Ob die Systemzeit für das Wachstum von Beeren verwendet wird, was bedeutet, dass sie auch wachsen, wenn das Spiel nicht läuft.
     useSystemTimeForBerries=false
     # Lässt deine Welt der echten Uhrzeit folgen oder nicht (verwendet die Systemzeit des Servers).
     useSystemTimeForWorldTime=false
-    # Keep this off unless you are diagnosing issues.
+    # Whether to use the fix for clumping Pokémon around the edges of the world. If you are on Sponge, or don't know what it is, keep it off.
+    useUpdateEntityWithOptionalForceFix=false
+    # Lassen Sie dies ausgeschaltet, es sei denn, Sie diagnostizieren Probleme.
     verbose=false
     # Speichert die Pixelmon-Entities in die Welt-Daetei wenn aktiviert (erhöht die Größe der Datei und die Speicherzeit signifikant). Benötigt für den Morph-Mod.
     writeEntitiesToWorld=false
 }
 # Grafikeinstellungen.
 Graphics {
+    # If true, show percentage of opponent HP remaining
+    advancedBattleInformation=true
     # Zeigt die Gesundheit jedes Pokémon in Form einer Leiste über seinem Kopf.
     drawHealthBars=false
-    # Emissive textures adds an addisional effect that makes some pokemon's texture glow. but has a significant proformace penilty.
+    # Emissive Texturen fügen einen zusätzlichen Effekt hinzu, der einige Pokémon zum Leuchten bringt, aber mit erheblichen Leistungseinbußen verbunden ist.
     emissiveTextures=true
-    # The distance to stop rendering emissive textures.
-    emissiveTexturesDistance=32
+    # Der Abstand, bei dem das Rendern von emittierenden Texturen beendet werden soll.
+    emissiveTexturesDistance=16
     # Sets how far Pokémon names and levels can be seen from (client setting only). 1=Default, 2=Farther, 3=Far
     namePlateRange=2
     # Wenn true, Angriffseffekte werden nur Spielern angezeigt, die an einem Kampf teilnehmen oder ihn beobachten.
@@ -252,7 +374,7 @@ Graphics {
     showCurrentAttackTarget=true
     # Sollen wilde Pokémon ihren Namen tragen.
     showWildNames=true
-    # pixelmon.config.smoothAnimations.comment
+    # Ob SMD-Modelle flüssige Animationen verwenden oder nicht.
     smoothAnimations=false
     # Sucht aus, ob eine externe Kamera im Kampf verwendet wird oder nicht.
     useBattleCamera=true
@@ -261,27 +383,27 @@ Graphics {
     # Benutzt die SMD-Normal-Maps um die Pokémon zu schattieren.
     useSmoothShadingOnPokemon=true
 }
-# Settings that control how much healing should occur while walking about.
+# Einstellungen, die steuern, wie viel Heilung beim Herumlaufen erfolgen soll.
 Healing {
-    # Chance to passively heal status effects from a party Pokémon with each step.
-    chanceToHealStatusPassively=0.004999999888241291
-    # Chance to passively revive a knocked out party Pokémon with each step.
-    chanceToRevivePassively=0.0010000000474974513
-    # Percentage of maximum health that the passive heal can go up to.
+    # Chance, bei jedem Schritt passiv Statuseffekte von einem Party-Pokémon zu heilen.
+    chanceToHealStatusPassively=0.05
+    # Chance, mit jedem Schritt ein ausgeschaltetes Party-Pokémon passiv wiederzubeleben.
+    chanceToRevivePassively=0.01
+    # Prozentsatz der maximalen Gesundheit, den die passive Heilung erreichen kann.
     passiveHealingMaxHealthPercentage=0.25
-    # Number of steps after which to heal 1 HP from a party Pokémon.
+    # Anzahl der Schritte, nach denen 1 KP von einem Party-Pokémon geheilt wird.
     stepsToHealHealthPassively=75
-    # Whether to passively heal party Pokémon over time or not.
+    # Ob man Party-Pokémon im Laufe der Zeit passiv heilen soll oder nicht.
     usePassiveHealer=true
 }
-# pixelmon.config.outsideeffects.comment
+# Einstellungen, die steuern, wie viel äußere Einflüsse beim Herumlaufen auftreten sollen.
 OutsideEffects {
-    # Max damage poison can afflict
+    # Gift kann maximalen Schaden anrichten
     poisonMaxDamage=5
-    # Number of steps after which effects are applied
+    # Anzahl der Schritte, nach denen Effekte angewendet werden
     stepsToApplyEffects=15
-    # Whether to use outside effects or not
-    useOutsideEffects=true
+    # Ob externe Effekte verwendet werden sollen oder nicht
+    useOutsideEffects=false
 }
 # Einstellungen für PixelUtilities.
 PixelUtilities {
@@ -320,7 +442,7 @@ PokeLoot {
     spawnNormal=true
     # Kisten-Spawnrate. 0: 1 pro 64 chunks. 1: 1 pro 32 chunks. 2: 1 pro 18 chunks. 3: 1 pro 10 chunks
     spawnRate=2
-    # Sets frequency (hours) that a player can reuse a timed loot chest (both placed in Creative and naturally spawned) if set to TIMED.
+    # Legt die Häufigkeit (Stunden) fest, mit der ein Spieler eine zeitgesteuerte Beutetruhe (sowohl in Creative platziert als auch natürlich erzeugt) wiederverwenden kann, wenn sie auf TIMED gesetzt ist.
     timedLootReuseHours=23
 }
 # Alle Einstellungen für Pokerus
@@ -334,22 +456,109 @@ Pokerus {
     # Chance Pokerus auf andere Pokemon in der Nähe zu übertragen. (1/x) (-1 zum deaktivieren; 0 um es dauerhaft zu aktivieren)
     pkrsSpreadRate=5
 }
-# Settings that alter how quests function.
+# Einstellungen, die die Funktionsweise von Quests ändern.
 Quests {
-    # The maximum distance between elevators pairing with each other.
+    # Die maximale Entfernung, die ein Spieler erreichen kann, bevor eine Quest auf einem neuen NPC gefunden werden kann, wenn sie nicht angenommen wird.
     questMaxRange=500
-    # Whether to let NPCs be randomly assigned quests or not. This does not affect quests that have already been started.
+    # Ob NPCs zufällig Quests zugewiesen werden sollen oder nicht. Dies wirkt sich nicht auf bereits begonnene Quests aus.
     questRandomNPCs=true
 }
-# Settings that control Pokémon mounts.
+# Settings regarding Max Raid Dens.
+Raids {
+    # Modifier of the den spawn chance if the den is going to spawn on liquid.
+    denAdditionalSpawnChanceOnLiquid=0.5
+    # Chance of a den respawning their boss when the den respawn time is hit
+    denRespawnChance=0.25
+    # Time of day when dens attempt to respawn their boss
+    denRespawnTime=100
+    # Chance of a den spawning per chunk
+    denSpawnChancePerChunk=0.029999999329447746
+    # Number of item drops for each star level in raids
+    denStarDrops=[
+        2,
+        4,
+        6,
+        8,
+        10
+    ]
+    # Weights of each star level appearing in raids
+    denStarWeights=[
+        10,
+        8,
+        6,
+        4,
+        2
+    ]
+    # Species which can never appear in raids
+    raidBlacklist=[
+        MissingNo
+    ]
+    # Health percentage raids are treated as having for catch purposes, per star level.
+    raidCatchHealthPercentage=[
+        0,
+        0.05000000074505806,
+        0.10000000149011612,
+        0.15000000596046448,
+        0.20000000298023224
+    ]
+    # Whether or not dens can be broken with repeat pickaxe hits
+    raidDensBreakable=true
+    # Gigantamax Factor rates per raid star level
+    raidGigantamaxFactorChances=[
+        512,
+        512,
+        512,
+        256,
+        128
+    ]
+    # HA rates per raid star level
+    raidHAChances=[
+        150,
+        125,
+        100,
+        75,
+        50
+    ]
+    # Whether raids can have legendaries
+    raidHaveLegendaries=true
+    # Whether raids can have Ultra Beasts
+    raidHaveUltraBeasts=true
+    # Star levels at which Master Balls/Park Balls cannot be used.
+    raidMasterBallBlock=[
+        false,
+        false,
+        false,
+        false,
+        false
+    ]
+    # Star levels at which only the leader of the raid has a catch attempt.
+    raidOnlyLeaderCanCatch=[
+        false,
+        false,
+        false,
+        false,
+        false
+    ]
+    # Shiny rates per raid star level
+    raidShinyChances=[
+        4096,
+        4096,
+        2048,
+        1024,
+        1024
+    ]
+}
+# Einstellungen, die Pokémon-Reittiere steuern.
 Riding {
     # Erlaubt es Spielern, auf Pokémon zu reiten. Bei false kann man nicht auf Pokémon steigen (serverweite Einstellung).
     allowRiding=true
     # Ermöglicht es, gerittene Pokémon durch die Blickrichtung zu steuern.
     enablePointToSteer=true
-    # Allows riding Pokémon mounts that do not have the ability to fly or surf.
+    # Legt die Fluggeschwindigkeitsbegrenzung für ein berittenes Pokémon im neuen Flugsystem fest.
+    flyingSpeedLimit=4
+    # Ermöglicht das Reiten von Pokémon-Reittieren, die nicht fliegen oder surfer können.
     landMount=true
-    # Requires flying and water Pokémon mounts to have HM moves Fly or Surf (respectively) to use those abilities when ridden.
+    # Erfordert Flug- und Wasser-Pokémon-Reittiere, um VM-Attacken Fliegen oder Surfer (jeweils) zu haben, um diese Fähigkeiten beim Reiten zu nutzen.
     requireHM=false
     # Multiplikator für die Reitgeschwindigkeit auf Pokemon. Kann zwischen 0 und 1 sein.
     ridingSpeedMultiplier=1
@@ -381,12 +590,43 @@ Spawning {
     bellInclusionRange=10
     # Chance that a bell, at dawn, will start to ring. 1 = 100%.
     bellSuccessChance=0.01
+    # Chancen, pro Bosstyp ein Sonderbonbon von einem Boss zu erhalten.
+    bossCandyChances=[
+        0.10000000149011612,
+        0.20000000298023224,
+        0.3499999940395355,
+        0.5,
+        0.75,
+        1
+    ]
+    # The level increases of each boss tier. Common, Uncommon, Rare, Epic, Legendary, Ultimate, Haunted, Drowned.
+    bossLevelIncreases=[
+        5,
+        10,
+        20,
+        30,
+        40,
+        50,
+        25,
+        75
+    ]
     # Die Spawnrate von Bossen (1/x) in der Wildnis.
-    bossRate=50
+    bossRate=65
     # Chance dass ein Mega Boss Spawn Versuch gelingen wird (0-1)
-    bossSpawnChance=0.20000000298023224
+    bossSpawnChance=0.030000001192092896
     # Durschnittliche Anzahl an Ticks bevor ein Boss spawnt.
-    bossSpawnTicks=1000
+    bossSpawnTicks=2000
+    # Relative Spawn-Chancen jeder Boss-Stufe.
+    bossWeights=[
+        16,
+        12,
+        8,
+        4,
+        2,
+        1
+    ]
+    # Ob Bosse, die spawnen, Mega-Entwickeln müssen, wenn sie können.
+    bossesAlwaysMegaIfPossible=true
     # Pokemon welche zu einem Ditto werden können
     canTransformToDittoOnCatch=[
         Pidgey,
@@ -404,40 +644,56 @@ Spawning {
         Remoraid,
         Starly
     ]
+    # pixelmon.config.caveMaxMultiplier.comment
+    caveMaxMultiplier=4
     # Zwingt wilde Pokémon, nach der Flucht oder einem verlorenen Kampf zu despawnen.
     despawnOnFleeOrLoss=false
     # Zeigt die serverweite Angkündigung 'Ein legendäres Pokémon ist in einem <name>-Biome erschienen' wenn ein legendäres Pokémon spawnt.
     displayLegendaryGlobalMessage=true
     # Anzahl an Blöcken um das Level zu erhöhen wenn Spawn Level nach Entfernung aktiv ist.
     distancePerLevel=30
+    # Displays server-wide announcement 'A Legendary has spawned in a Max Raid Den in a <name> biome' when a Legendary spawns in one.
+    doLegendaryRaidEvent=true
     # Die maximale Anzahl an Entities (NPCs oder Pokémon) die ein Spieler spawnen kann. Niedriger für bessere Leistung.
-    entitiesPerPlayer=40
+    entitiesPerPlayer=45
+    # Chance, dass ein wildes Pokémon mit dem Gigadynamax-Faktor (1/Rate) spawnt. 0 deaktiviert Gigadynamax-Faktor-Spawns.
+    gigantamaxFactorSpawnRate=512
     # Chance, dass ein wildes Pokémon mit seiner versteckten Fähigkeit spawnt (1/Rate). 0 deaktiviert Spawns von versteckten Fähigkeiten.
-    hiddenAbilitySpawnRate=30
-    # The horizontal radius of the areas randomly selected near the player to do spawning in. Lower for better performance but less reliable spawning.
+    hiddenAbilitySpawnRate=50
+    # Der horizontale Radius der Bereiche, die zufällig in der Nähe des Spielers ausgewählt werden, um das Spawnen durchzuführen. Niedriger für bessere Leistung, aber weniger zuverlässiges Spawnen.
     horizontalSliceRadius=10
-    # How many ticks 'lead' the player tracking spawner will give players based on their motion. This tries to spawn at locations the player is about to be.
+    # Wie viele Ticks 'führen' der Spieler-Tracking-Spawner den Spielern basierend auf ihrer Bewegung gibt. Dies versucht, an Orten zu spawnen, an denen sich der Spieler befinden wird.
     horizontalTrackFactor=80
-    # Chance per valid chunk to contain an Ilex Shrine.
+    # Chance pro gültigem Chunk, einen Steineichenwald-Schrein zu enthalten.
     ilexShrineSpawnRate=0.005
     # Soll Pixelmon die Minecraft Loottables modifizieren.
     injectIntoLootTables=true
+    # Number of ticks until legendaries will despawn.
+    legendaryDespawnTicks=6000
     # Chance, dass ein Versuch, ein legendäres Pokémon zu spawnen, gelingt (0-1).
-    legendarySpawnChance=0.20000000298023224
+    legendarySpawnChance=0.30000001192092896
     # Durchschnittliche Anzahl an Ticks, bevor ein Versuch, ein legendäres Pokémon zu spawnen, gestartet wird (wird durch die Spawn-Chance modifiziert).
-    legendarySpawnTicks=10000
+    legendarySpawnTicks=15000
     # Welche Loottypen, wie "simple_dungeon", soll Pixelmon nicht modifizieren.
     lootIgnoreList=[]
+    # How long the effects of the Black/White Flute last for in seconds once used.
+    lureFluteDuration=180
+    # By how many levels the Black/White Flute can affect spawns by
+    lureFluteLevelModifier=10
     # Maximales Level von Pokemon wenn Spawn Level nach Entfernung aktiv ist.
     maxLevelByDistance=60
     # Die maximale Distanz vom Spieler um Pokemon zu spawnen.
     maximumDistanceFromCentre=64
+    # Die maximale Anzahl von fliegenden Pokémon, die auf natürliche Weise gleichzeitig gespawnt werden können (soft Limit). Dies gilt nicht für Angeln, externe Attacken, Befehle oder legendäres Spawnen.
+    maximumSpawnedFlyingPokemon=500
+    # Die maximale Anzahl von fliegenden Pokémon, die pro Spieler erscheinen können. Niedriger für bessere Leistung.
+    maximumSpawnedFlyingPokemonPerPlayer=45
     # Die maximale Anzahl an Pokémon die gleichzeitig spawnen können. Dazu zählt nicht: Fischen, External Moves, Befehle oder Legendäre Pokémon.
     maximumSpawnedPokemon=3000
     # Chance des Spawnens eines Meltans wenn ein Metallerz abgebaut wird. 1/x
     meltanSpawnChance=3072
     # Prozentchance eines Meltans zum Verwandeln in einen Ditto beim fangen.
-    meltanTransformChance=0.001
+    meltanTransformChance=0.025
     # Die minimale Distanz zwischen einem lebenden Spieler und dem gespawnten Entitie.
     minimumDistanceBetweenSpawns=15
     # Die minimale Distanz die ein Pokemon vom Spieler weg spawnt. Um so kleiner die Zahl um so näher spawnt das Pokemon.
@@ -454,56 +710,60 @@ Spawning {
     spawnLevelsByDistance=false
     # Lege fest, ob wilde Pokemon im Levelbereich der Pokemon des Spielers sind.
     spawnLevelsCloserToPlayerLevels=true
+    # Whether or not wild Pokémon will spawn with higher levels underground.
+    spawnLevelsIncreaseInCaves=true
     # Pokéshops spawnen zusammen mit Verkäufern in Minecraft-Dörfern.
     spawnPokeMarts=true
     # A multiplier that speeds up legendary and mega boss spawning based on player count. ticks = spawnTicks / (1 + (number of players - 1) * spawnTicksPlayerMultiplier)
     spawnTicksPlayerMultiplier=0.009999999776482582
-    # pixelmon.config.spawnZygardeCells.comment
+    # Erlaube Zygarde-Zellen, zufällig in der Welt zu erscheinen.
     spawnZygardeCells=true
     # Die maximale Anzahl an Spawns in einem einzelnen Spawn-Zyklus für einen einzelnen Spieler. Verringern für langsameres Spawnen und bessere Leistung.
     spawnsPerPass=3
     # Chance das ein wildes Pokemon beim Fang ein Ditto wird.
-    transformToDittoOnCatch=0.01
+    transformToDittoOnCatch=0.05
     # Wenn true spawnen Pokémon mit den neuesten Attacken in ihrem Level-Up-Attackenreportoire. Wenn false spawnen Pokémon mit zufälligen Attacken aus ihrem Level-Up-Attackenreportoire.
     useRecentLevelMoves=false
-    # The vertical radius of the areas randomly selected near the player to do spawning in. Lower for better performance but less reliable spawning. Larger than horizontal to better match player behavior.
+    # Der vertikale Radius der Bereiche, die zufällig in der Nähe des Spielers ausgewählt werden, um das Spawnen durchzuführen. Niedriger für bessere Leistung, aber weniger zuverlässiges Spawnen. Größer als horizontal, um dem Spielerverhalten besser zu entsprechen.
     verticalSliceRadius=25
-    # How many ticks 'lead' the player tracking spawner will give players based on their vertical motion. Typically best as zero due to the interference jumping can cause.
+    # Wie viele Ticks 'führen' der Spieler-Tracking-Spawner den Spielern basierend auf ihrer vertikalen Bewegung gibt. Typischerweise am besten als Null aufgrund der Interferenz, die ein Springen verursachen kann.
     verticalTrackFactor=0
 }
 # Settings that control the starter screen and Pokémon.
 Starters {
-    # Level (min=5, max=100).
+    # The starting level. (min=5, max=100)
     level=5
     # Shiny starters.
     shiny=true
-    # Liste der Starter (max of 21). Für Alolas füge "1" am Ende des Namens hinzu (z.B. "Vulpix1")
+    # Liste der Starter (max of 24). Für Alolas füge "1" am Ende des Namens hinzu (z.B. "Vulpix1")
     starterList=[
-        Sandile,
-        Volbeat,
-        Spinda,
-        Minior,
-        Spiritomb,
-        Elgyem,
-        Vulpix,
-        Oshawott,
-        Feebas,
-        Meditite,
+        Bulbasaur,
+        Squirtle,
         Charmander,
-        Shroomish,
-        Tropius,
-        Darumaka,
-        Gastly,
-        Dreepy,
-        Hoppip,
-        Glameow,
-        Mienfoo,
-        Corphish,
+        Chikorita,
+        Totodile,
+        Cyndaquil,
+        Treecko,
+        Mudkip,
+        Torchic,
+        Turtwig,
+        Piplup,
+        Chimchar,
+        Snivy,
+        Oshawott,
+        Tepig,
+        Chespin,
+        Froakie,
+        Fennekin,
+        Rowlet,
+        Popplio,
+        Litten,
         Grookey,
-        Bronzor,
-        Solrock,
-        Anorith
+        Sobble,
+        Scorbunny
     ]
+    # Whether starter Pokémon get the Destiny mark or not.
+    starterMarks=true
     # Ob die Starterliste von dieser Config geladen werden soll
     useCustomStarters=true
 }
@@ -513,31 +773,4 @@ Storage {
     asyncInterval=60
     # Aktiviert das Speichern von Party- und Computerdaten außerhalb des Hauptspeichers. (nur Server)
     useAsyncSaving=false
-}
-# Whether the Ultra Space Dimension is activated or not.
-UltraSpace {
-    # Ob Endsiedlungen in neuen Ultradimensions-Chunks generiert werden sollen
-    spawnUltraSpaceEndCities=true
-    # Ob mehr Pokéloot Kisten in neuen Ultradimensions-Chunks generiert werden sollen
-    spawnUltraSpaceExtraLoots=true
-    # Ob mehr Erze in neuen Ultradimensions-Chunks generiert werden sollen
-    spawnUltraSpaceExtraOres=true
-    # Ob mehr Pflanzen (Aprikokos, Beeren) in neuen Ultradimensions-Chunks generiert werden sollen
-    spawnUltraSpaceExtraPlants=true
-    # Ob mehr Schreine in neuen Ultradimensions-Chunks generiert werden sollen
-    spawnUltraSpaceExtraShrines=true
-    # Ob Nethersiedlungen in neuen Ultradimensions-Chunks generiert werden sollen
-    spawnUltraSpaceNetherForts=true
-    # Whether the Ultra Space Dimension is activated or not.
-    ultraSpace=true
-    # Ändert die Seltenheit von Bossen in der Ultra Dimension (bossRate * ultraSpaceBossModifier).
-    ultraSpaceBossModifier=0.5
-    # Ob der Nebel in der Ultradimension fÃ¼r Blinde optimiert werden soll.
-    ultraSpaceColourblindMode=false
-    # Die Dimensions-ID welche die Ultradimension nutzen wird. Wenn sie kleiner als 2 ist, wird der Standardwert 72 genommen.
-    ultraSpaceDimId=0
-    # Verändere die Seltenheit von versteckten Fähigkeiten in der Ultra Dimension (hiddenAbilitySpawnRate * ultraSpaceHiddenAbilityModifier).
-    ultraSpaceHiddenAbilityModifier=0.30000001192092896
-    # Verändere die Seltenheit von Shiny Pokemon in der Ultra Dimension (shinyRate * ultraSpaceShinyModifier).
-    ultraSpaceShinyModifier=0.5
 }

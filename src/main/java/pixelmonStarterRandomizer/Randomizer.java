@@ -12,11 +12,18 @@ public class Randomizer {
     private final Random random = new Random();
     List<String> starters = new ArrayList<>();
     private List<String> possibleStarters;
-    private final List<String> priorityList = Arrays.asList("Dreepy", "Sandile", "Riolu", "Gastly", "Charmander", "Eevee",
-            "Trapinch", "Beldum", "Timburr", "Venipede", "Litwick", "Froakie", "Honedge", "Goomy", "Scorbunny", "Popplio",
-            "Dratini", "Meditite", "Gligar", "Deerling", "Golett", "Hatenna", "Impidimp");
-    
-    private void readStartersFile(){
+
+    //these Pixelmon will be selected with a higher possibility
+    private final List<String> priorityList = Arrays.asList("Dreepy", "Charmander", "Eevee",
+            "Trapinch", "Beldum", "Timburr", "Venipede", "Machop", "Froakie", "Honedge", "Goomy", "Scorbunny", "Dewpider",
+            "Dratini", "Meditite", "Gligar", "Jangmo-o", "Golett", "Hatenna", "Rookidee", "Togepi", "Rowlet", "Horsea", "Treecko", "Mudkip",
+            "Ralts", "Tympole", "Drilbur", "Zorua", "Axew", "Deino", "Litwick", "Clauncher", "Tyrunt", "Phantump", "Sandygast", "Mareanie");
+
+
+    /**
+     * Method will convert content of 'starters.txt' to a list(possibleStarters) of strings
+     */
+    private void readStartersFile() {
 
         try {
             possibleStarters = Files.readAllLines(Paths.get("starters.txt"));
@@ -25,25 +32,29 @@ public class Randomizer {
             System.err.println("File not found");
             e.printStackTrace();
         }
+        //for testing/debugging
         if (possibleStarters != null) {
-            System.out.println("Amount of Pokémon in starters.txt: " + possibleStarters.size());
+            System.out.println("Amount of entities in starters.txt: " + possibleStarters.size());
         }
     }
 
-    public List<String> randomizeStarters(){
+    /**
+     * Will return a list of 24 different Pixelmon entities as strings. (The mod allows up to 24 starters to be defined in the hocon file)
+     */
+    public List<String> randomizeStarters() {
 
         readStartersFile();
 
+        //combines strings of starters.txt with strings of priorityList to increase the chances of getting an entity defined in priorityList above
         List<String> combineStarters = Stream.concat(possibleStarters.stream(), priorityList.stream()).collect(Collectors.toList());
-        starters.clear();
 
-        for (int i = 0; i < 24; i++){
+        for (int i = 0; i < 24; i++) {
 
             String randomStarter = combineStarters.get(random.nextInt(combineStarters.size()));
 
-            if (!starters.contains(randomStarter)){
+            if (!starters.contains(randomStarter)) {
                 starters.add(i, randomStarter);
-            }else {
+            } else {
                 i--;
             }
         }
@@ -53,11 +64,12 @@ public class Randomizer {
 
     /**
      * Method for testing of the randomizer:
-     * Prints exactly 24 different Pokémon names separated by lines and commas
+     * Prints all(24) entity names of generated starters in the new hocon file, separated by lines and commas.
      */
-    public void printStarterList(){ //test method
+    public void printStarterList() {
+        System.out.println("The following starters have been selected: ");
         for (int i = 0; i < starters.size(); i++) {
-            if (i < (starters.size() - 1)){
+            if (i < (starters.size() - 1)) {
                 System.out.println(starters.get(i) + ",");
             } else {
                 System.out.println(starters.get(i));
